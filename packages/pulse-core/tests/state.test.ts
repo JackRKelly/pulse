@@ -199,11 +199,9 @@ describe('State', () => {
     });
 
     test('.removeWatcher() | Removes watcher', () => {
-      let didWatchCallback = false;
-
       //Adds keyed callback that fires upon mutation
       StringState.watch('StringState', () => {
-        didWatchCallback = true;
+        didCallback = true;
       });
       //Removes keyed callback from string state
       StringState.removeWatcher('StringState');
@@ -211,7 +209,7 @@ describe('State', () => {
       StringState.set('Bye Pulse!');
 
       //Should be false due to keyed callback being removed and not firing
-      expect(didWatchCallback).toBeFalsy();
+      expect(didCallback).toBeFalsy();
     });
   });
 
